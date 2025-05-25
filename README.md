@@ -1,4 +1,4 @@
-# 🌿 tarkus-env-manager
+### 🌿 tarkus-env-manager
 
 `tarkus-env-manager` is a lightweight TypeScript utility for safely validating and managing environment variables using [Zod](https://zod.dev/). It is designed for Node.js applications where strict validation and transformation of environment variables is critical.
 
@@ -17,6 +17,7 @@
 
 ```bash
 npm install tarkus-env-manager zod dotenv
+
 ```
 
 > ⚠️ `dotenv` is required as a peer dependency and is automatically used inside the library.

@@ -1,20 +1,27 @@
+Berikut adalah versi terbaru dari **README** yang telah diperbarui untuk mencerminkan bahwa `dotenv` kini secara otomatis di-*load* di dalam `tarkus-env-manager`, sehingga pengguna tidak perlu lagi mengkonfigurasi `.env` secara manual.
+
 # 🌿 tarkus-env-manager
 
-`tarkus-env-manager` is a lightweight TypeScript utility for safely validating and managing environment variables using [Zod](https://zod.dev/). It’s designed for Node.js applications where strict validation and transformation of environment variables is critical.
+`tarkus-env-manager` is a lightweight TypeScript utility for safely validating and managing environment variables using [Zod](https://zod.dev/). It is designed for Node.js applications where strict validation and transformation of environment variables is critical.
+
+✅ **Automatically loads `.env` via `dotenv` inside the library** — no need to manually call `dotenv.config()` in your project.
 
 ## 🚀 Features
 
 * 🔒 Strict validation of environment variables using Zod
 * 🔄 Supports value transformation (e.g., string to boolean, string to array)
-* 🧪 Auto-validation during app startup
 * ⚙️ Default values supported
-* 🛠️ Seamless integration with `process.env`
+* 🧪 Auto-validation during app startup
+* 🛠️ Full integration with `process.env`
+* 📦 Built-in support for loading `.env` via `dotenv`
 
 ## 📦 Installation
 
 ```bash
-npm install tarkus-env-manager zod
+npm install tarkus-env-manager zod dotenv
 ```
+
+> ⚠️ `dotenv` is required as a peer dependency and is automatically used inside the library.
 
 ## 🔧 Usage
 
@@ -95,11 +102,11 @@ export default env;
 * Explicitly checks for missing or empty environment variables.
 * Throws an error listing missing keys.
 
-## ⚠️ Tips
+## ⚠️ Usage Notes
 
-* Use `.transform()` for converting strings into other types.
-* Use `.default()` to assign fallback values when not present in `.env`.
-* Always ensure your `.env` matches the schema structure to prevent runtime errors.
+* You **do not need to manually call** `dotenv.config()` — it is automatically loaded within `tarkus-env-manager`.
+* Ensure your `.env` file is present in the root of your project.
+* Always make sure your `.env` matches your schema.
 
 ## ✅ Example `.env` File
 
@@ -148,8 +155,6 @@ KAFKA_USE_SSL=true
 
 ### `EnvConfig.ts`
 
-Defines the environment schema and initializes the environment manager:
-
 ```ts
 const EnvManager = new EnvironmentManager<typeof envSchema>(envSchema);
 const env = EnvManager.getEnv();
@@ -160,10 +165,9 @@ export default env;
 
 ### `server.ts`
 
-Uses the validated environment to run the application, and performs a pre-check for any missing variables:
-
 ```ts
-EnvManager.check(); // Fails early if any required environment variable is missing
+EnvManager.check(); // Ensures no required variables are missing
+
 const port = env.APP_PORT;
 
 app.listen(port, () => {

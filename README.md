@@ -118,8 +118,7 @@ APP_ACCESS_TOKEN_SECRET=secret1
 APP_REFRESH_TOKEN_SECRET=secret2
 APP_USER_DEFAULT_PASSWORD=defaultpass
 
-ALIYUN_HOST=https://aliyun.example.com
-NEXT_JS_SLIK_HOST=https://slik.example.com
+EXAMPLE_HOSTNAME=https://example.com
 
 DB_HOST=localhost
 DB_HOST_READ=localhost

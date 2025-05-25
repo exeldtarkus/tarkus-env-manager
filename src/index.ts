@@ -1,4 +1,5 @@
 import {ZodObject, ZodType, z} from 'zod';
+import 'dotenv/config';
 
 export default class EnvironmentManager<T extends ZodType<any, any, any>> {
   private schema: T;

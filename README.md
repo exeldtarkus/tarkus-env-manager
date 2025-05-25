@@ -1,5 +1,3 @@
-Berikut adalah versi terbaru dari **README** yang telah diperbarui untuk mencerminkan bahwa `dotenv` kini secara otomatis di-*load* di dalam `tarkus-env-manager`, sehingga pengguna tidak perlu lagi mengkonfigurasi `.env` secara manual.
-
 # 🌿 tarkus-env-manager
 
 `tarkus-env-manager` is a lightweight TypeScript utility for safely validating and managing environment variables using [Zod](https://zod.dev/). It is designed for Node.js applications where strict validation and transformation of environment variables is critical.
